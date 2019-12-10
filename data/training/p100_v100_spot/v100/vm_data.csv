@@ -1,0 +1,44 @@
+VM_name,Uptime,Revoked
+v100-spot-us-west1-b-run1-master,992.533673,Manually stopped due to revoked master
+v100-spot-us-west1-b-run2-master,2690.389754,Manually stopped due to revoked master
+v100-spot-us-west1-b-run3-master,4564.274657,Job completed
+v100-spot-us-west1-b-run4-master,4609.959131,Job completed
+v100-spot-us-west1-b-run5-master,4767.274315,Job completed
+v100-spot-us-west1-b-run6-master,1943.112471,Manually stopped due to revoked master
+v100-spot-us-west1-b-run7-master,4657.512358,Job completed
+v100-spot-us-west1-b-run8-master,801.40913,Manually stopped due to revoked master
+v100-spot-us-west1-b-run9-master,4682.908039,Job completed
+v100-spot-us-west1-b-run10-master,2741.137025,Manually stopped due to revoked master
+v100-spot-us-west1-b-run11-master,295.047683,Manually stopped due to revoked master
+v100-spot-us-west1-b-run12-master,2368.515484,Manually stopped due to revoked master
+v100-spot-us-west1-b-run13-master,4579.767294,Job completed
+v100-spot-us-west1-b-run14-master,2121.056861,Manually stopped due to revoked master
+v100-spot-us-west1-b-run15-master,4691.969007,Job completed
+v100-spot-us-west1-b-run16-master,314.846263,Manually stopped due to revoked master
+v100-spot-us-west1-b-run17-master,4614.036734,Job completed
+v100-spot-us-west1-b-run18-master,4563.568053,Job completed
+v100-spot-us-west1-b-run19-master,263.63147,Manually stopped due to revoked master
+v100-spot-us-west1-b-run20-master,4592.582457,Job completed
+v100-spot-us-west1-b-run21-master,1365.892838,Manually stopped due to revoked master
+v100-spot-us-west1-b-run22-master,366.875879,Manually stopped due to revoked master
+v100-spot-us-west1-b-run23-master,178.240816,Manually stopped due to revoked master
+v100-spot-us-west1-b-run24-master,4591.675234,Job completed
+v100-spot-us-west1-b-run25-master,4572.39911,Job completed
+v100-spot-us-west1-b-run26-master,4641.058338,Job completed
+v100-spot-us-central1-a-run1-master,4698.513737,Job completed
+v100-spot-us-central1-a-run2-master,752.776107,Manually stopped due to revoked master
+v100-spot-us-central1-a-run3-master,1224.645739,Manually stopped due to revoked master
+v100-spot-us-central1-a-run4-master,4674.998401,Job completed
+v100-spot-us-central1-a-run5-master,3941.500246,Manually stopped due to revoked master
+v100-spot-us-central1-a-run6-master,2668.547042,Manually stopped due to revoked master
+v100-spot-us-central1-a-run7-master,4758.244873,Job completed
+v100-spot-us-central1-a-run8-master,4842.643091,Job completed
+v100-spot-us-central1-a-run9-master,4752.157144,Job completed
+v100-spot-us-central1-a-run10-master,4690.056284,Job completed
+v100-spot-us-central1-a-run11-master,2430.597342,Manually stopped due to revoked master
+v100-spot-us-central1-a-run12-master,4605.396628,Job completed
+v100-spot-us-central1-a-run13-master,4684.656179,Job completed
+v100-spot-us-central1-a-run14-master,1540.367346,Manually stopped due to revoked master
+v100-spot-us-central1-a-run15-master,4719.884003,Job completed
+v100-spot-us-central1-a-run16-master,5039.625584,Job completed
+v100-spot-us-central1-a-run17-master,5083.966961,Job completed

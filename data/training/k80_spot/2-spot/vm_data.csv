@@ -1,0 +1,65 @@
+VM_name,Uptime,Revoked
+spot2-us-east1-c-run1-master,1649.333651,Manually stopped due to revoked master
+spot2-us-east1-c-run1-worker-0,941.822825,Revoked
+spot2-us-east1-c-run2-master,7210.155053,Job completed
+spot2-us-east1-c-run2-worker-0,7209.718772,Job completed
+spot2-us-east1-c-run3-master,9942.932092,Job completed
+spot2-us-east1-c-run3-worker-0,4602.106118,Revoked
+spot2-us-east1-c-run4-master,9552.708686,Job completed
+spot2-us-east1-c-run4-worker-0,4999.244043,Revoked
+spot2-us-east1-c-run5-master,13298.691687,Job completed
+spot2-us-east1-c-run5-worker-0,1421.197914,Revoked
+spot2-us-east1-c-run6-master,7226.406901,Job completed
+spot2-us-east1-c-run6-worker-0,7225.416484,Job completed
+spot2-us-east1-c-run7-master,7268.673961,Job completed
+spot2-us-east1-c-run7-worker-0,7267.711424,Job completed
+spot2-us-east1-c-run8-master,7197.461127,Job completed
+spot2-us-east1-c-run8-worker-0,7196.489081,Job completed
+spot2-us-central1-c-run1-master,7300.224757,Job completed
+spot2-us-central1-c-run1-worker-0,7300.055602,Job completed
+spot2-us-central1-c-run2-master,7245.124475,Job completed
+spot2-us-central1-c-run2-worker-0,7241.393815,Job completed
+spot2-us-central1-c-run3-master,7279.626426,Job completed
+spot2-us-central1-c-run3-worker-0,7279.003976,Job completed
+spot2-us-central1-c-run4-master,7280.752804,Job completed
+spot2-us-central1-c-run4-worker-0,7281.001015,Job completed
+spot2-us-central1-c-run5-master,7309.670024,Job completed
+spot2-us-central1-c-run5-worker-0,7309.241151,Job completed
+spot2-us-central1-c-run6-master,7343.155023,Job completed
+spot2-us-central1-c-run6-worker-0,7342.562562,Job completed
+spot2-us-central1-c-run7-master,7376.369647,Job completed
+spot2-us-central1-c-run7-worker-0,7376.578241,Job completed
+spot2-us-central1-c-run8-master,7356.159839,Job completed
+spot2-us-central1-c-run8-worker-0,7356.171654,Job completed
+spot2-us-west1-b-run1-master,7375.638628,Job completed
+spot2-us-west1-b-run1-worker-0,7374.840491,Job completed
+spot2-us-west1-b-run2-master,7330.592528,Job completed
+spot2-us-west1-b-run2-worker-0,7329.776459,Job completed
+spot2-us-west1-b-run3-master,7322.005112,Job completed
+spot2-us-west1-b-run3-worker-0,7321.13539,Job completed
+spot2-us-west1-b-run4-master,14192.011898,Job completed
+spot2-us-west1-b-run4-worker-0,568.609042,Revoked
+spot2-us-west1-b-run5-master,7271.234133,Job completed
+spot2-us-west1-b-run5-worker-0,7270.350263,Job completed
+spot2-us-west1-b-run6-master,7357.397184,Job completed
+spot2-us-west1-b-run6-worker-0,7356.447947,Job completed
+spot2-us-west1-b-run7-master,11673.172577,Job completed
+spot2-us-west1-b-run7-worker-0,2815.331351,Revoked
+spot2-us-west1-b-run8-master,7381.010214,Job completed
+spot2-us-west1-b-run8-worker-0,7380.314846,Job completed
+spot2-europe-west1-b-run1-master,7376.120651,Job completed
+spot2-europe-west1-b-run1-worker-0,7375.307222,Job completed
+spot2-europe-west1-b-run2-master,8248.213717,Job completed
+spot2-europe-west1-b-run2-worker-0,8247.254855,Job completed
+spot2-europe-west1-b-run3-master,7332.84494,Job completed
+spot2-europe-west1-b-run3-worker-0,7331.557167,Job completed
+spot2-europe-west1-b-run4-master,7381.607248,Job completed
+spot2-europe-west1-b-run4-worker-0,7381.358585,Job completed
+spot2-europe-west1-b-run5-master,7319.774991,Job completed
+spot2-europe-west1-b-run5-worker-0,7318.859766,Job completed
+spot2-europe-west1-b-run6-master,7404.497891,Job completed
+spot2-europe-west1-b-run6-worker-0,7403.921339,Job completed
+spot2-europe-west1-b-run7-master,7405.986112,Job completed
+spot2-europe-west1-b-run7-worker-0,7405.153508,Job completed
+spot2-europe-west1-b-run8-master,7403.171591,Job completed
+spot2-europe-west1-b-run8-worker-0,7402.358746,Job completed

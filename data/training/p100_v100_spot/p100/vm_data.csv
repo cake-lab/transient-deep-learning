@@ -1,0 +1,36 @@
+VM_name,Uptime,Revoked
+p100-spot-us-east1-c-run1-master,6173.536555,Job completed
+p100-spot-us-east1-c-run2-master,5928.437794,Job completed
+p100-spot-us-east1-c-run3-master,5922.384884,Job completed
+p100-spot-us-east1-c-run4-master,5742.988335,Job completed
+p100-spot-us-east1-c-run5-master,344.39957,Manually stopped due to revoked master
+p100-spot-us-east1-c-run6-master,6203.212396,Job completed
+p100-spot-us-east1-c-run7-master,5602.157917,Job completed
+p100-spot-us-east1-c-run8-master,5560.082029,Job completed
+p100-spot-us-east1-c-run9-master,5568.646016,Job completed
+p100-spot-us-east1-c-run10-master,5568.606677,Job completed
+p100-spot-us-east1-c-run11-master,5635.075945,Job completed
+p100-spot-us-east1-c-run12-master,5594.541901,Job completed
+p100-spot-us-east1-c-run13-master,5553.835902,Job completed
+p100-spot-us-east1-c-run14-master,5631.814656,Job completed
+p100-spot-us-east1-c-run15-master,438.412532,Manually stopped due to revoked master
+p100-spot-us-east1-c-run16-master,5572.49502,Job completed
+p100-spot-us-east1-c-run17-master,5581.436841,Job completed
+p100-spot-us-east1-c-run18-master,5591.23522,Job completed
+p100-spot-us-east1-c-run19-master,5537.220556,Job completed
+p100-spot-us-central1-c-run1-master,5712.070891,Job completed
+p100-spot-us-central1-c-run2-master,5581.578625,Job completed
+p100-spot-us-central1-c-run3-master,5787.524081,Job completed
+p100-spot-us-central1-c-run4-master,5804.951357,Job completed
+p100-spot-us-central1-c-run5-master,5638.036576,Job completed
+p100-spot-us-central1-c-run6-master,5603.806082,Job completed
+p100-spot-us-central1-c-run7-master,5655.42068,Job completed
+p100-spot-us-central1-c-run8-master,5637.284288,Job completed
+p100-spot-us-central1-c-run9-master,5532.381852,Job completed
+p100-spot-us-central1-c-run10-master,5520.08716,Job completed
+p100-spot-us-central1-c-run11-master,5550.800768,Job completed
+p100-spot-us-central1-c-run12-master,5539.096777,Job completed
+p100-spot-us-central1-c-run13-master,5592.953425,Job completed
+p100-spot-us-central1-c-run14-master,5946.060985,Job completed
+p100-spot-us-central1-c-run15-master,5835.474572,Job completed
+p100-spot-us-central1-c-run16-master,6251.074336,Job completed
