@@ -143,5 +143,7 @@ If you would like to cite the paper, please cite as:
 ## Contact
 
 Shijian Li [sli8@wpi.edu](sli8@wpi.edu)
+
 Robert Walls [rjwalls@wpi.edu](rjwalls@wpi.edu)
+
 Tian Guo [tian@wpi.edu](tian@wpi.edu)
