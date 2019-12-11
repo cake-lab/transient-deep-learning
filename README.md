@@ -4,9 +4,29 @@
 
 This repo is for the paper "Speeding up Deep Learning with Transient Servers" presented at ICAC 2019.
 
-The paper explores the opportunity of conducting distributed training of deep neural networks with transient cloud resources, especially the GPU servers. The transient resources are cheaper than on-demand ones, but with the caveat of being revoked by the cloud provider at any given time. By using the transient cloud servers, we achieved the potential of up to 62.9% monetary savings and consequently 7.7X speed up due to the spare budget to deploy more servers in training. We also identified several opportunities for both cloud infrustracture and deep learning frameworks to provide better support for transient distributed training. 
+The paper explores the opportunity of conducting distributed training of deep neural networks with transient cloud resources, especially the GPU servers. The transient resources are cheaper than on-demand ones, but with the caveat of being revoked by the cloud provider at any given time. By using transient cloud servers, we achieved the potential of up to 62.9% monetary savings and consequently 7.7X speed up due to the spare budget to deploy more servers in training. We also identified several opportunities for both cloud infrustracture and deep learning frameworks to provide better support for transient distributed training. 
 
 The repo contains code, found in `code` folder, to reproduce experiments mentioned in the paper. The code will request cloud resources that the user specify, propagate training scripts and set up distributed training jobs on the servers. The repo also provide experiment data shown in the paper, located in the `data` folder. For details on the data, please see readme inside `data` folder.
+
+#### Highlight
+
+- Our data driven approach shows that by using transient cloud servers, we can achieve the potential of up to 62.9% monetary savings and 7.7X speed up compared to single server baseline. 
+
+- By launching large scale transient cloud servers, we are able to gather data of the impact transient revocation has on training performance, in terms of training time, cost, and converged accuracy and trained models.
+
+- We demonstrates several benefits and limitations of using heterogeneous servers in distributed training. In particular, our findings suggest a number of plausible transient-aware designs for deep learning frameworks, including the ability to train with dynamic cluster sizes, to better exploit these cheap transient servers. 
+
+![1](./data/img/cluster_4_spots_heatmap.png)
+
+**Training performance and cost of using cluster with 4 transient K80 GPU servers**
+
+![2](./data/img/cluster_8_spots_heatmap.png)
+
+**Training performance and cost of using cluster with 8 transient K80 GPU servers**
+
+![3](./data/img/hetero_cost.png)
+
+**Training cost of using different configurations of heterogeneous clusters with 4 GPU servers**
 
 ## How to use the code
 
@@ -80,14 +100,14 @@ sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda-9.0/lib64/
 sudo chmod a+r /usr/local/cuda-9.0/lib64/libcudnn*
 ```
 
-The last step would be to install TensorFlow 1.10 and [modified Tensor2Tensor](https://github.com/lawdpls/spotTrain-tensor2tensor).
+The last step would be to install `TensorFlow 1.10` and modified `Tensor2Tensor`. `Tensor2Tensor` is can be found in the `code` folder.
 ```bash
 sudo pip install tensorflow-gpu==1.10
 ## for cpu servers install tensorflow==1.10 instead
-pip install -e ~/spotTrain-tensor2tensor
+pip install -e ~/code/tensor2tensor
 ```
 
-After the dependency installation, make two images, one for workers and one for parameter servers. Example command as below(to create instance-gpu and instance-cpu images):
+After the dependency installation, make two images, one for workers and one for parameter servers. Example command as below(to create instance-gpu and instance-cpu images that we used in the code):
 ```bash
 gcloud compute instances set-disk-auto-delete instance-gpu \
 --disk instance-gpu --no-auto-delete
@@ -140,10 +160,16 @@ If you would like to cite the paper, please cite as:
 }
 ```
 
+## Acknowlegement
+
+We thank all our anonymous reviewers for their insightful comments. This work is supported in part by National Science Foundation grants #1755659 and #1815619, Google Cloud Platform Research credits, the National Natural Sci- ence Foundation of China (61802377), and the Youth Inno- vation Promotion Association at CAS.
+
 ## Contact
 
-Shijian Li [sli8@wpi.edu](sli8@wpi.edu)
+Our lab [Github](https://cake-lab.github.io/projects/)
 
-Robert Walls [rjwalls@wpi.edu](rjwalls@wpi.edu)
+- Shijian Li [sli8@wpi.edu](sli8@wpi.edu)
 
-Tian Guo [tian@wpi.edu](tian@wpi.edu)
+- Robert Walls [rjwalls@wpi.edu](rjwalls@wpi.edu)
+
+- Tian Guo [tian@wpi.edu](tian@wpi.edu)
