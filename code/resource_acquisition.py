@@ -7,11 +7,7 @@ import paramiko
 import sys
 from datetime import datetime
 
-if os.path.exists('/Users/ozymandias/Desktop/cloudComputing/shijian-18-key.json'):
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/ozymandias/Desktop/cloudComputing/shijian-18-key.json'
-PROJECTNAME = "shijian-18"
 COMPUTE = googleapiclient.discovery.build('compute', 'v1')
-
 
 class checkStatus(threading.Thread):
     def __init__(self, compute, project, zone, name):
@@ -47,173 +43,173 @@ class checkStatus(threading.Thread):
 
 class ResourceManager(object):
 
-    def create_instance(self, compute, project, zone, name, preemtible, cpu_num, is_gpu, gpu_type):
-        while True:
-            try:
-                if is_gpu:
-                    # other images to use: gpu-custom-tf
-                    image_response = compute.images().get(project=PROJECTNAME, image='gpu-ubuntu18-2').execute()
-                    # image_response = compute.images().get(project=PROJECTNAME, image='gpu-custom-tf').execute()
-                    source_disk_image = image_response['selfLink']
-                    if gpu_type == 'k80':
-                        gpu = 'nvidia-tesla-k80'
-                        machine_type = "zones/%s/machineTypes/custom-4-53248-ext" % (zone)
-                    elif gpu_type == 'v100':
-                        gpu = 'nvidia-tesla-v100'
-                        machine_type = "zones/%s/machineTypes/custom-8-62464-ext" % (zone)
-                    elif gpu_type == 'p100':
-                        gpu = 'nvidia-tesla-p100'
-                        machine_type = "zones/%s/machineTypes/custom-8-62464-ext" % (zone)
-                else:
-                    image_response = compute.images().get(project=PROJECTNAME, image='cpu-updated-2').execute()
-                    source_disk_image = image_response['selfLink']
-                    machine_type = "zones/%s/machineTypes/custom-%s-32768-ext" % (zone, str(cpu_num))
+    # def create_instance(self, compute, project, zone, name, preemtible, cpu_num, is_gpu, gpu_type):
+    #     while True:
+    #         try:
+    #             if is_gpu:
+    #                 # other images to use: gpu-custom-tf
+    #                 image_response = compute.images().get(project=PROJECTNAME, image='gpu-ubuntu18-2').execute()
+    #                 # image_response = compute.images().get(project=PROJECTNAME, image='gpu-custom-tf').execute()
+    #                 source_disk_image = image_response['selfLink']
+    #                 if gpu_type == 'k80':
+    #                     gpu = 'nvidia-tesla-k80'
+    #                     machine_type = "zones/%s/machineTypes/custom-4-53248-ext" % (zone)
+    #                 elif gpu_type == 'v100':
+    #                     gpu = 'nvidia-tesla-v100'
+    #                     machine_type = "zones/%s/machineTypes/custom-8-62464-ext" % (zone)
+    #                 elif gpu_type == 'p100':
+    #                     gpu = 'nvidia-tesla-p100'
+    #                     machine_type = "zones/%s/machineTypes/custom-8-62464-ext" % (zone)
+    #             else:
+    #                 image_response = compute.images().get(project=PROJECTNAME, image='cpu-updated-2').execute()
+    #                 source_disk_image = image_response['selfLink']
+    #                 machine_type = "zones/%s/machineTypes/custom-%s-32768-ext" % (zone, str(cpu_num))
 
-                # machine_type = "zones/%s/machineTypes/custom-2-8192-ext" % zone
-                # if stress != None:
-                #     startup_script = open(
-                #         os.path.join(
-                #         os.path.dirname(__file__), stress), 'r').read()
-                # else:
-                #     startup_script = None
-                shutdown_script = open(
-                    os.path.join(
-                        os.path.dirname(__file__), 'shutdown.py'), 'r').read()
+    #             # machine_type = "zones/%s/machineTypes/custom-2-8192-ext" % zone
+    #             # if stress != None:
+    #             #     startup_script = open(
+    #             #         os.path.join(
+    #             #         os.path.dirname(__file__), stress), 'r').read()
+    #             # else:
+    #             #     startup_script = None
+    #             shutdown_script = open(
+    #                 os.path.join(
+    #                     os.path.dirname(__file__), 'shutdown.py'), 'r').read()
 
-                if is_gpu:
-                    startup_script = open(
-                        os.path.join(
-                            os.path.dirname(__file__), 'startup.py'), 'r').read()
-                    config = {
-                        'name': name,
-                        'machineType': machine_type,
-                        "minCpuPlatform": "Intel Broadwell", #CPU Platform spec
-                        'scheduling': [
-                            {
-                                'preemptible': preemtible,
-                                "onHostMaintenance": "terminate",
-                            }
-                        ],
-                        'serviceAccounts': [
-                            {
-                                "email": "[SERVICE_ACCOUNT_EMAIL]",
-                                "scopes": ["https://www.googleapis.com/auth/cloud-platform"]
-                            }
-                        ],
+    #             if is_gpu:
+    #                 startup_script = open(
+    #                     os.path.join(
+    #                         os.path.dirname(__file__), 'startup.py'), 'r').read()
+    #                 config = {
+    #                     'name': name,
+    #                     'machineType': machine_type,
+    #                     "minCpuPlatform": "Intel Broadwell", #CPU Platform spec
+    #                     'scheduling': [
+    #                         {
+    #                             'preemptible': preemtible,
+    #                             "onHostMaintenance": "terminate",
+    #                         }
+    #                     ],
+    #                     'serviceAccounts': [
+    #                         {
+    #                             "email": "[SERVICE_ACCOUNT_EMAIL]",
+    #                             "scopes": ["https://www.googleapis.com/auth/cloud-platform"]
+    #                         }
+    #                     ],
 
-                        'disks': [
-                            {
-                                'boot': True,
-                                'autoDelete': True,
-                                'diskSizeGb': '100',
-                                'initializeParams': {
-                                    'sourceImage': source_disk_image,
-                                }
-                            }
-                        ],
+    #                     'disks': [
+    #                         {
+    #                             'boot': True,
+    #                             'autoDelete': True,
+    #                             'diskSizeGb': '100',
+    #                             'initializeParams': {
+    #                                 'sourceImage': source_disk_image,
+    #                             }
+    #                         }
+    #                     ],
 
-                        'networkInterfaces': [{
-                            'network': 'global/networks/default',
-                            # 'networkIP': '10.142.0.24',
-                            'accessConfigs': [
-                                {'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}
-                            ]
-                        }],
+    #                     'networkInterfaces': [{
+    #                         'network': 'global/networks/default',
+    #                         # 'networkIP': '10.142.0.24',
+    #                         'accessConfigs': [
+    #                             {'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}
+    #                         ]
+    #                     }],
 
-                        'serviceAccounts': [{
-                            'email': 'default',
-                            'scopes': [
-                                'https://www.googleapis.com/auth/devstorage.read_write',
-                                'https://www.googleapis.com/auth/logging.write',
-                                'https://www.googleapis.com/auth/cloud-platform'
-                            ]
-                        }],
+    #                     'serviceAccounts': [{
+    #                         'email': 'default',
+    #                         'scopes': [
+    #                             'https://www.googleapis.com/auth/devstorage.read_write',
+    #                             'https://www.googleapis.com/auth/logging.write',
+    #                             'https://www.googleapis.com/auth/cloud-platform'
+    #                         ]
+    #                     }],
 
-                        "guestAccelerators":
-                            [
-                                {
-                                    "acceleratorCount": 1,
-                                    "acceleratorType": "https://www.googleapis.com/compute/v1/projects/" + project + "/zones/" + zone + "/acceleratorTypes/" + gpu
-                                }
-                            ],
+    #                     "guestAccelerators":
+    #                         [
+    #                             {
+    #                                 "acceleratorCount": 1,
+    #                                 "acceleratorType": "https://www.googleapis.com/compute/v1/projects/" + project + "/zones/" + zone + "/acceleratorTypes/" + gpu
+    #                             }
+    #                         ],
 
-                        'metadata': {
-                            'items': [
-                                # {
-                                #     'key': 'startup-script',
-                                #     'value': startup_script
-                                # },
-                                {
-                                    'key': 'shutdown-script',
-                                    'value': shutdown_script
-                                }
-                            ]
-                        }
-                    }
-                else:
-                    startup_script = open(
-                        os.path.join(
-                            os.path.dirname(__file__), 'ps_startup.sh'), 'r').read()
-                    config = {
-                        'name': name,
-                        'machineType': machine_type,
-                        "minCpuPlatform": "Intel Broadwell",
-                        'scheduling': [
-                            {
-                                'preemptible': preemtible,
-                                "onHostMaintenance": "terminate",
-                            }
-                        ],
-                        'serviceAccounts': [
-                            {
-                                "email": "[SERVICE_ACCOUNT_EMAIL]",
-                                "scopes": ["https://www.googleapis.com/auth/cloud-platform"]
-                            }
-                        ],
+    #                     'metadata': {
+    #                         'items': [
+    #                             # {
+    #                             #     'key': 'startup-script',
+    #                             #     'value': startup_script
+    #                             # },
+    #                             {
+    #                                 'key': 'shutdown-script',
+    #                                 'value': shutdown_script
+    #                             }
+    #                         ]
+    #                     }
+    #                 }
+    #             else:
+    #                 startup_script = open(
+    #                     os.path.join(
+    #                         os.path.dirname(__file__), 'ps_startup.sh'), 'r').read()
+    #                 config = {
+    #                     'name': name,
+    #                     'machineType': machine_type,
+    #                     "minCpuPlatform": "Intel Broadwell",
+    #                     'scheduling': [
+    #                         {
+    #                             'preemptible': preemtible,
+    #                             "onHostMaintenance": "terminate",
+    #                         }
+    #                     ],
+    #                     'serviceAccounts': [
+    #                         {
+    #                             "email": "[SERVICE_ACCOUNT_EMAIL]",
+    #                             "scopes": ["https://www.googleapis.com/auth/cloud-platform"]
+    #                         }
+    #                     ],
 
-                        'disks': [
-                            {
-                                'boot': True,
-                                'autoDelete': True,
-                                'diskSizeGb': '100',
-                                'initializeParams': {
-                                    'sourceImage': source_disk_image,
-                                }
-                            }
-                        ],
+    #                     'disks': [
+    #                         {
+    #                             'boot': True,
+    #                             'autoDelete': True,
+    #                             'diskSizeGb': '100',
+    #                             'initializeParams': {
+    #                                 'sourceImage': source_disk_image,
+    #                             }
+    #                         }
+    #                     ],
 
-                        'networkInterfaces': [{
-                            'network': 'global/networks/default',
-                            # 'networkIP': '10.142.0.24',
-                            'accessConfigs': [
-                                {'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}
-                            ]
-                        }],
+    #                     'networkInterfaces': [{
+    #                         'network': 'global/networks/default',
+    #                         # 'networkIP': '10.142.0.24',
+    #                         'accessConfigs': [
+    #                             {'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}
+    #                         ]
+    #                     }],
 
-                        'serviceAccounts': [{
-                            'email': 'default',
-                            'scopes': [
-                                'https://www.googleapis.com/auth/devstorage.read_write',
-                                'https://www.googleapis.com/auth/logging.write',
-                                'https://www.googleapis.com/auth/cloud-platform'
-                            ]
-                        }]
-                        # ,
-                        # 'metadata': {
-                        #     'items': [{
-                        #         'key': 'startup-script',
-                        #         'value': startup_script
-                        #     }]
-                        # }
-                    }
+    #                     'serviceAccounts': [{
+    #                         'email': 'default',
+    #                         'scopes': [
+    #                             'https://www.googleapis.com/auth/devstorage.read_write',
+    #                             'https://www.googleapis.com/auth/logging.write',
+    #                             'https://www.googleapis.com/auth/cloud-platform'
+    #                         ]
+    #                     }]
+    #                     # ,
+    #                     # 'metadata': {
+    #                     #     'items': [{
+    #                     #         'key': 'startup-script',
+    #                     #         'value': startup_script
+    #                     #     }]
+    #                     # }
+    #                 }
 
-                return compute.instances().insert(
-                    project=project,
-                    zone=zone,
-                    body=config).execute()
-            except googleapiclient.errors.HttpError as e:
-                print "Error occured when creating instance", e
-                pass
+    #             return compute.instances().insert(
+    #                 project=project,
+    #                 zone=zone,
+    #                 body=config).execute()
+    #         except googleapiclient.errors.HttpError as e:
+    #             print "Error occured when creating instance", e
+    #             pass
 
     def check_instance_status(self, compute, project, zone, name):
         while True:
@@ -249,8 +245,14 @@ class ResourceManager(object):
 
             # time.sleep(0.001)
 
-    def acquire_resource(self, job_name, num_of_ps, ps_core_num, num_of_worker, limit, zone=None, gpu_type='k80'):
+    def acquire_resource(self, proj_name, cred_path, job_name, num_of_ps, ps_core_num, num_of_worker, limit, zone=None, gpu_type='k80'):
 
+        PROJECTNAME = proj_name
+        if os.path.exists(cred_path):
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cred_path
+        else:
+            print("Please provide a valid credential path.")
+            return
         # zone = price_monitor.find_best_zone() ## Should be a list of zones in order
         # target_zone = zone[0]
         # next_candidate = decision_maker.find_best_match()
@@ -362,11 +364,17 @@ class ResourceManager(object):
 
         return result
 
-    def acquire_hetero_resource(self, job_name, num_of_ps, ps_core_num, num_of_worker, limit, gpu_array, zone_array):
+    def acquire_hetero_resource(self, proj_name, cred_path, job_name, num_of_ps, ps_core_num, num_of_worker, limit, gpu_array, zone_array):
 
         # zone = price_monitor.find_best_zone() ## Should be a list of zones in order
         # target_zone = zone[0]
         # next_candidate = decision_maker.find_best_match()
+        PROJECTNAME = proj_name
+        if os.path.exists(cred_path):
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cred_path
+        else:
+            print("Please provide a valid credential path.")
+            return
         worker_core_num = 4
 
         limit = limit

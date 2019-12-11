@@ -9,14 +9,20 @@ import resource_acquisition
 import threading
 import paramiko
 
-PROJECTNAME = "shijian-18"
-if os.path.exists('/Users/ozymandias/Desktop/cloudComputing/shijian-18-key.json'):
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/ozymandias/Desktop/cloudComputing/shijian-18-key.json'
 COMPUTE = googleapiclient.discovery.build('compute', 'v1')
 
-def main(job_name, num_ps, ps_core_num, num_worker, num_shard, bucket_dir, model, hparam_set, problem, train_steps, ckpt_frequency, automation_test, profile, limit, setSlot, maxWorker, gpu):
+def main(proj_name, cred_path, job_name, num_ps, ps_core_num, num_worker, num_shard, bucket_dir, model, hparam_set, problem, train_steps, ckpt_frequency, automation_test, profile, limit, setSlot, maxWorker, zone=None, gpu=None, hetero, gpu_array=None, zone_array=None):
+    PROJECTNAME = proj_name
+    if os.path.exists(cred_path):
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cred_path
+    else:
+        print("Please provide a valid credential path.")
+        return
     job = resource_acquisition.ResourceManager()
-    server_lists = job.acquire_resource(job_name, int(num_ps), int(ps_core_num), int(num_worker), limit, zone='us-west1-b', gpu_type=gpu)
+    if hetero = '1':
+        server_lists = job.acquire_hetero_resource(proj_name, cred_path, job_name, int(num_ps), int(ps_core_num), int(num_worker), limit, gpu_array, zone_array)
+    else:
+        server_lists = job.acquire_resource(proj_name, cred_path, job_name, int(num_ps), int(ps_core_num), int(num_worker), limit, zone=zone, gpu_type=gpu)
     worker_temp = str(int(num_worker)-1)
     subprocess.call(
         ["./start_one_time_training.sh", job_name, num_ps, worker_temp, num_shard, bucket_dir, model, hparam_set,
@@ -24,6 +30,16 @@ def main(job_name, num_ps, ps_core_num, num_worker, num_shard, bucket_dir, model
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--proj-name',
+        type=str,
+        required=True,
+        help='The name for your GCE project.')
+    parser.add_argument(
+        '--cred-path',
+        type=str,
+        required=True,
+        help='GCE credential.')
     parser.add_argument(
         '--job-name',
         type=str,
@@ -111,10 +127,32 @@ if __name__ == "__main__":
         default=8,
         help='Number of potential workers.')
     parser.add_argument(
+        '--zone',
+        type=str,
+        required=True,
+        help='Which zone to run.')
+    parser.add_argument(
         '--gpu',
         type=str,
         required=False,
         help='What GPU to use for initial workers.')
+    parser.add_argument(
+        '--hetero',
+        type=str,
+        required=False,
+        help='Enter 1 for heterogeneous cluster.')
+    parser.add_argument(
+        '--gpu-array',
+        type=str,
+        required=False,
+        nargs='+',
+        help='What GPUs to use for initial workers.')
+    parser.add_argument(
+        '--zone-array',
+        type=str,
+        nargs='+',
+        required=False,
+        help='What zones to use for initial workers.')    
     # parser.add_argument(
     #     '--data-dir',
     #     type=str,
