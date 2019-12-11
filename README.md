@@ -16,18 +16,18 @@ The repo contains code, found in `code` folder, to reproduce experiments mention
 
 - We demonstrates several benefits and limitations of using heterogeneous servers in distributed training. In particular, our findings suggest a number of plausible transient-aware designs for deep learning frameworks, including the ability to train with dynamic cluster sizes, to better exploit these cheap transient servers. 
 
-<div style="text-align:center"><img src="./data/img/cluster_4_spots_heatmap.png" width="400" height="250"></div>
+<div align="center"><img src="./data/img/cluster_4_spots_heatmap.png" width="400" height="250"></div>
 
 <!-- ![1](./data/img/cluster_4_spots_heatmap.png) -->
 
 **Fig 1. Training performance and cost of using cluster with 4 transient K80 GPU servers**
 
-<div style="text-align:center"><img src="./data/img/cluster_8_spots_heatmap.png" width="350" height="250"></div>
+<div align="center"><img src="./data/img/cluster_8_spots_heatmap.png" width="350" height="300"></div>
 <!-- ![2](./data/img/cluster_8_spots_heatmap.png) -->
 
 **Fig 2. Training performance and cost of using cluster with 8 transient K80 GPU servers**
 
-<div style="text-align:center"><img src="./data/img/hetero_cost.png" width="300" height="250"></div>
+<div align="center"><img src="./data/img/hetero_cost.png" width="300" height="250"></div>
 <!-- ![3](./data/img/hetero_cost.png) -->
 
 **Fig 3. Training cost of using different configurations of heterogeneous clusters with 4 GPU servers**
