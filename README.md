@@ -16,15 +16,19 @@ The repo contains code, found in `code` folder, to reproduce experiments mention
 
 - We demonstrates several benefits and limitations of using heterogeneous servers in distributed training. In particular, our findings suggest a number of plausible transient-aware designs for deep learning frameworks, including the ability to train with dynamic cluster sizes, to better exploit these cheap transient servers. 
 
-![1](./data/img/cluster_4_spots_heatmap.png)
+<img src="./data/img/cluster_4_spots_heatmap.png" width="250" height="200">
+
+<!-- ![1](./data/img/cluster_4_spots_heatmap.png) -->
 
 **Training performance and cost of using cluster with 4 transient K80 GPU servers**
 
-![2](./data/img/cluster_8_spots_heatmap.png)
+<img src="./data/img/cluster_8_spots_heatmap.png" width="250" height="200">
+<!-- ![2](./data/img/cluster_8_spots_heatmap.png) -->
 
 **Training performance and cost of using cluster with 8 transient K80 GPU servers**
 
-![3](./data/img/hetero_cost.png)
+<img src="./data/img/hetero_cost.png" width="250" height="200">
+<!-- ![3](./data/img/hetero_cost.png) -->
 
 **Training cost of using different configurations of heterogeneous clusters with 4 GPU servers**
 
@@ -160,9 +164,9 @@ If you would like to cite the paper, please cite as:
 }
 ```
 
-## Acknowlegement
+## Acknowledgement
 
-We thank all our anonymous reviewers for their insightful comments. This work is supported in part by National Science Foundation grants #1755659 and #1815619, Google Cloud Platform Research credits, the National Natural Sci- ence Foundation of China (61802377), and the Youth Inno- vation Promotion Association at CAS.
+We thank all our anonymous reviewers for their insightful comments. This work is supported in part by National Science Foundation grants #1755659 and #1815619, Google Cloud Platform Research credits, the National Natural Science Foundation of China (61802377), and the Youth Innovation Promotion Association at CAS.
 
 ## Contact
 
