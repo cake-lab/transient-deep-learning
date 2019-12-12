@@ -2,7 +2,7 @@
 
 ## About
 
-This repo is for the paper "Speeding up Deep Learning with Transient Servers" presented at ICAC 2019.
+This repo is for the paper [Speeding up Deep Learning with Transient Servers](https://arxiv.org/abs/1903.00045) presented at ICAC 2019. The paper was also covered by a [Google for Education case study blog](https://edu.google.com/why-google/case-studies/wpi-gcp/?modal_active=none). 
 
 The paper explores the opportunity of conducting distributed training of deep neural networks with transient cloud resources, especially the GPU servers. The transient resources are cheaper than on-demand ones, but with the caveat of being revoked by the cloud provider at any given time. By using transient cloud servers, we achieved the potential of up to 62.9% monetary savings and consequently 7.7X speed up due to the spare budget to deploy more servers in training. We also identified several opportunities for both cloud infrastructure and deep learning frameworks to provide better support for transient distributed training. 
 
