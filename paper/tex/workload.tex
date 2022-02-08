@@ -1,0 +1,72 @@
+\section{Workload}
+\label{workload}
+
+
+\begin{figure}[t]
+
+    \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{TaskSchedulingByUser}.pdf}
+        \caption{}
+    \label{workload:usercompare:task_scheduled} 
+    \end{subfigure}
+        
+    \hfill
+
+    \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{TaskRuntimeByUser}.pdf}
+        \caption{}
+    \label{workload:usercompare:task_runtime} 
+    \end{subfigure}
+    
+    
+    \caption{}
+    \label{eval:fig:two-models}
+\end{figure}
+
+As discussed in the Section~\ref{background.workdloads} there exist many workloads available for study but these are all at the cluster-wide scale.
+This means that these workloads are useful for the purpose of designed new clusters and schedulers but not useful for provisioning as few users are able to scale up a virtual cluster to 3k cores, let alone 300k cores.
+Therefore, an important first step was to isolate more representative workloads from these larger workloads.
+
+
+\subsection{Workload Isolation}
+\label{workload.isolation}
+
+For a source workload we used the Google Borg workload~\cite{google_trace}.
+This workload has two main advantages.
+First, the workload is broken up into tasks with their user IDs anonymized in a regular manner.
+This allows easy isolation of tasks belonging to each user.
+Second, this workload is from the Google Compute Engine cloud so the workloads we see are from actual cloud users.
+This indicates that they are what users would be be expected to run in the cloud.
+\footnote{Some of these jobs are non-production, so not from cloud customers.  However, these workloads are still useful since they can allow us insight to how an outside user may transition to a cloud-based virtual cluster.}
+\par
+
+Parsing the Google Borg trace required separating tasks based on users.
+The five users with the most tasks run throughout the course of the workload were identified and used for further analysis.
+
+\subsection{Workload Analysis}
+\label{workload.analysis}
+
+Figure~\ref{eval:fig:two-models} shows the details of tasks submitted by the five most active users in the Google Trace.
+\par
+
+Figure~\ref{workload:usercompare:task_scheduled} shows the number of tasks submitted each day of the google trace.
+What is particularlly important to note about this is that there is a large variation in the habits of different users.
+User \texttt{29678} submits a nearly constant high number of tasks throughout the entire month.  
+Meanwhile, user \texttt{b4c85} submitted a large number of tasks but not as regularly as \texttt{29678}.  Instead they submitted in a few main batches, with almost no tasks submitted in the time between.
+Finally, user \texttt{4a383} submitted very few tasks throughout most of the trace but in the last week submitted over 200ktasks.
+\par
+
+Figure~\ref{workload:usercompare:task_runtime} shows the runtime distribution of the tasks submitted by each user on a logarithmic scale.
+This shows that different users are running different kinds of tasks.
+Users \texttt{b4c85}, \texttt{4a383} and \texttt{e6332} have profiles that seem to be nearly bimodal in distribution.
+Meanwhile users \texttt{29678} and \texttt{6b308} have more complex profiles.
+\par
+
+The most interesting of these runtime distributions is that of user \texttt{b4c85} due to how well the distribution seems to be bimodal.
+This trace looks like it could possibly be for a typical set of map-reduce jobs with lots of short map jobs followed by a few long reduce jobs.
+Paired with its submission distribution it forms a good baseline for a user that is taking advantage of a cloud-based virtual cluster.
+
+
+

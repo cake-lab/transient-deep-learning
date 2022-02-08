@@ -1,0 +1,67 @@
+\section{Related Work}
+
+
+\textbf{Deep learning frameworks}. There are a number of deep learning
+frameworks~\cite{caffe2,tensorflow,pytorch,tensor2tensor} that provide a
+composable pipeline for machine learning practitioners to design, train,
+validate, and deploy deep learning models. Although our measurement study is
+conducted on the popular TensorFlow framework~\cite{tensorflow}, we believe the
+results can be extended to other frameworks, such as Caffe/FireCaffe, CNTK,
+MXNet~\cite{caffe2,cntk,mxnet}. The reason is that current deep learning
+frameworks share the same distributed training method, adopt a parameter server
+to maintain training parameters, use SGD-based methods for optimizing model
+parameters~\cite{sgd1,stale4}, and support distributed training on multi-GPU
+servers. However, most current deep learning frameworks do not natively
+support dynamically adding or removing servers while the training process is
+ongoing. Very recently, MXNet has embarked the efforts to dynamically scale
+training jobs on EC2~\cite{dt_mxnet}. Complementary to the recent support of
+dynamic training, our work pinpoints the need for elasticity in transient
+distributed training to better utilize the dynamically available transient
+servers across types, regions, and monetary costs. 
+
+
+\textbf{Performance studies on deep learning.} A plethora of
+works~\cite{2016cloudandbigdata} have compared and studied deep learning
+performance under different hardware and software configurations.  In
+particular, researchers have investigated the scaling potential of using CPU
+servers~\cite{jeffdean}, single GPU servers, and multi-GPU
+servers~\cite{shi2018performance}.  As the computational needs of deep learning
+grows so does the support for distributed training over a cluster of GPU
+servers~\cite{project_adam,firecaffe,geeps}. Prior work has considered the
+impact of network communication~\cite{lin2017deep, wen2017terngrad,
+strom2015scalable}; how to tune hyperparamters, e.g., learning rate and batch
+size~\cite{srinivasan2018analysis,stale4,goyal2017accurate,you2018imagenet,akiba2017extremely};
+and how to mitigate the communication bottlenecks and the impact of stale model
+parameters~\cite{stale1,stale2,stale3,stale4}.  However, most works on
+distributed training performance~\cite{shi2018performance,dl_perf1,dl_perf2}
+make the implicit assumptions of \emph{static} and \emph{homogenous} cluster
+configurations. Our study aims to understand the training performance of cheap
+transient servers that have dynamic availability, revocation patterns, and unit
+costs. In addition, these previous studies often focus on measuring training
+speed using the average time to process one
+mini-batch~\cite{2016cloudandbigdata,shi2018performance,peng2018optimus}. While
+in this work, we consider multiple important performance metrics---including
+training time, cost, and accuracy---that could be impacted by training on
+transient servers. 
+
+\textbf{Performance optimization based on transient servers.} Since transient
+servers are cheaper than their on-demand counterparts, many researchers have studied how to
+effectively run applications on cloud transient servers with as few
+modifications as possible~\cite{hotspot,spotcheck}. Some researchers have proposed
+transient-aware resource managers~\cite{portfolio-driven,proteus} to optimize
+job schedulers by taking into account the revocation rates of transient
+servers. Other researchers have proposed system-level fault-tolerance techniques
+such as dynamic checkpointing to optimize the execution time of various
+applications, including web services~\cite{spotcheck,tributary}, big data
+applications~\cite{See_spotrun,Flint,Tr-spark,spoton} and other
+memory-intensive applications~\cite{spot_burstable}. 
+DeepSpotCloud~\cite{deepspotcloud} looked at how to effectively train deep
+learning models by migrating from one GPU server to a cheaper transient
+server. Our efforts differs from prior work in two major ways. First, we focus on
+understanding how distributed training can benefit from cheap transient
+servers. Unlike the commonly studied batch jobs, big data applications, or
+even web services, training deep learning models poses a unique trade-off of
+converging accuracy and training speed. Second, we explored the feasibility and
+quantified the benefits of performing distributed training on transient servers
+and identify important transient-aware design changes in distributed training
+frameworks in order to more effectively utilize transient resources. 

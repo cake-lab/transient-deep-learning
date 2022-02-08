@@ -1,0 +1,146 @@
+%\documentclass[conference]{IEEEtran}
+\documentclass[10pt,conference,compsocconf]{IEEEtran}
+
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+%\usepackage{xcolor}
+
+% Fixing issues about labelindent error: either remove enumitem or relax 
+%\let\labelindent\relax
+%\usepackage[inline]{enumitem}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage[font={small,it}]{caption}  %%TG: change caption to be small 
+\usepackage{subcaption} 
+
+% 
+ \usepackage{multirow}
+ \usepackage{booktabs}
+ \usepackage[table,xcdraw]{xcolor}
+%% to balance latex citation
+\usepackage{balance}
+% to display page number (first page is not working yet.)
+\pagestyle{plain}
+%\usepackage{hyperref} % for email to work
+\usepackage[bookmarks=false]{hyperref}
+%\usepackage{setspace} % for reducing the line space 
+
+% ADD THE FOLLOWING COUPLE LINES INTO YOUR PREAMBLE
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+  \OLDthebibliography{#1}
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{0pt plus 0.3ex}
+}
+
+
+\graphicspath{ {images/} }
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+
+%\newcommand{\CloudCoaster}{\emph{SpotTrain\xspace}\xspace}
+\newcommand{\sysname}{\emph{SpotTrain}\xspace}
+\newcommand{\tian}[1]{{\color{red}\textbf{Tian: \textit{#1}}}}
+\newcommand{\sj}[1]{{\color{blue}\textbf{Shijian: \textit{#1}}}}
+\newcommand{\eat}[1]{}
+
+
+%\title{\sysname: Transient-assisted Distributed Training}
+%\title{An Empirical Study of Distributed Training using Transient Servers}
+%\title{On the Feasibility of Speeding up Deep Learning with Transient Servers}
+\title{Speeding up Deep Learning with Transient Servers}
+
+
+%\title{\sysname: exploring the feasibility of distributed training using transient servers\\
+%\thanks{Identify applicable funding agency here. If none, delete this.}
+%}
+
+%\author{\IEEEauthorblockN{Shijian Li \hspace*{10mm}  Robert J. Walls \hspace*{10mm} Lijie Xu$^\dag$ \hspace*{10mm} Tian Guo}
+%\IEEEauthorblockA{
+%%\textit{Computer Science}  \\
+%\textit{Computer Science, Worcester Polytechnic Institute} \\
+%\textit{Institute of Software, Chinese Academy of Sciences$^\dag$} \\ 
+%%\textit{State Key Lab of Computer Science, Institute of Software, Chinese Academy of Sciences$^\dag$ } \\ 
+%%Worcester, MA, USA \\
+%\href{mailto:tian@wpi.edu} {\{sli8,rjwalls,tian\}@wpi.edu}, xulijie@iscas.ac.cn} \\
+%% \\[-5.0ex]
+%}
+
+\author{\IEEEauthorblockN{Shijian Li\IEEEauthorrefmark{1},
+Robert J. Walls\IEEEauthorrefmark{2}, Lijie Xu\IEEEauthorrefmark{3} and
+Tian Guo\IEEEauthorrefmark{4}}
+\IEEEauthorblockA{Computer Science, Worcester Polytechnic Institute\IEEEauthorrefmark{1}\IEEEauthorrefmark{2}\IEEEauthorrefmark{4} \\
+Institute of Software, Chinese Academy of Sciences\IEEEauthorrefmark{3}\\
+\IEEEauthorrefmark{1}sli8@wpi.edu,
+\IEEEauthorrefmark{2}rjwalls@wpi.edu,
+\IEEEauthorrefmark{3}xulijie@iscas.ac.cn,
+\IEEEauthorrefmark{4}tian@wpi.edu}}
+%
+%\author{
+%\IEEEauthorblockN{Shijian Li}
+%\IEEEauthorblockA{
+%Computer Science \\
+%Worcester Polytechnic Institute \\ 
+%sli8@wpi.edu}
+%\and
+%\IEEEauthorblockN{Robert J. Walls}
+%\IEEEauthorblockA{Computer Science\\
+%Worcester Polytechnic Institute \\ 
+%rjwalls@wpi.edu}
+%\and 
+%\IEEEauthorblockN{Lijie Xu}
+%\IEEEauthorblockA{Institute of Software\\
+%Chinese Academy of Sciences \\ 
+%xulijie@iscas.ac.cn}
+%\and 
+%\IEEEauthorblockN{Tian Guo}
+%\IEEEauthorblockA{Computer Science\\
+%Worcester Polytechnic Institute \\ 
+%tian@wpi.edu}
+%}
+
+
+\maketitle
+
+\begin{abstract}
+\input{tex/abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+Distributed deep learning; performance measurement; cloud transient servers
+\end{IEEEkeywords}
+
+
+%\input{ tex/intro_v2 }
+\input{tex/intro}
+
+\input{tex/background}
+%\input{ tex/workload }
+%\input{ tex/design }
+\input{tex/measurement}
+%\input{ tex/eval }
+\input{tex/relatedwork}
+\input{tex/conclusion}
+\section*{Acknowledgment}
+We thank all our anonymous reviewers for their insightful comments. This work is supported in part by
+National Science Foundation grants \#1755659 and \#1815619,
+Google Cloud Platform Research credits, the National Natural Science Foundation
+of China (61802377), and the Youth Innovation Promotion Association at CAS.
+
+\balance
+% \scriptsize
+% \footnotesize
+{\scriptsize \bibliographystyle{IEEEtran}}
+%\setstretch{0.9}  % for reducing the line space, need the package setspace
+\bibliography{bib}
+
+
+\end{document}

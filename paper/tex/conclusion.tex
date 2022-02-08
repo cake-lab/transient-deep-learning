@@ -1,0 +1,12 @@
+\section{Conclusion and Future Work}
+
+In this paper, we described the \emph{first} large-scale empirical evaluation of distributed training using transient servers. 
+%We started with understanding the benefits of training speedup and cost reduction that closely tie to the key characteristics of transient servers: low-cost with chance of being revoked. 
+%In particular, 
+We compared various transient scenarios of training a popular CNN model called \emph{ResNet-32} with a standard image recognition dataset \emph{Cifar-10} using a single GPU training as the baseline. 
+We observe up to 7.7X training speedup within the cost budget with a slight accuracy decrease---an artifact of asynchronous training but not caused by the use of transient servers. In fact, we observe that model accuracy on average is higher when workers are revoked compared to distributed training without revocation. Our observations in turn suggests that deep learning frameworks could better trade-offs all three performance metrics, i.e., model training time, training cost and accuracy if cloud providers rework the revocation mechanism. In addition, our analysis reveals the inefficiency of current training frameworks in utilizing transient servers, manifesting in the basic support for model checkpointing, dynamic scale up or down training cluster.  
+
+
+%In this paper, we empirically evaluate the feasibility and effectiveness of utilizing cheap GPU servers to perform distributed training. We first present characterizations of transient GPU servers, and the baseline performance of training using single GPU servers. We then present our findings about running different factors that affect distributed training performance, quantified by training speed and accuracy. Last, we propose a number of optimization techniques that can allow us better to utilize geographically distributed transient servers, with adaptive checkpoint frequency, dynamic batch size configuration, and most important of all, adding or removing training servers on demand. 
+%
+%Our study suggests that utilizing transient servers can significantly improve the training speed for training medium-sized DNN models because these models are more likely to benefit from added resources, compared to small models that can converge relatively fast. Some models are just not going to benefit from adding more GPU servers beyond a threshold due to their inherent scalability limitations. 
